@@ -1,4 +1,4 @@
-package org.springbootschedulebot.service;
+package org.springbootschedulebot.commands;
 
 import org.springbootschedulebot.util.Commands;
 import org.springframework.stereotype.Component;

@@ -4,7 +4,9 @@ import lombok.Getter;
 
 public enum Commands {
 
-    START("/start", "start command"), HELP("/help", "help command");
+    START("/start", "start command"),
+    HELP("/help", "help command"),
+    CREATE("/create", "create new schedule table command");
 
     Commands(String command, String description) {
         this.command = command;

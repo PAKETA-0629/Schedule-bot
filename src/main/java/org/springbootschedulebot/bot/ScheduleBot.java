@@ -1,8 +1,9 @@
 package org.springbootschedulebot.bot;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springbootschedulebot.service.HelpCommand;
-import org.springbootschedulebot.service.StartCommand;
+import org.springbootschedulebot.commands.CreateCommand;
+import org.springbootschedulebot.commands.HelpCommand;
+import org.springbootschedulebot.commands.StartCommand;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,15 +21,18 @@ public class ScheduleBot extends TelegramLongPollingCommandBot {
     private final String BOT_NAME;
     private final StartCommand startCommand;
     private final HelpCommand helpCommand;
+    private final CreateCommand createCommand;
 
     @Autowired
-    public ScheduleBot(@Value("${bot.token}") String token, @Value("${bot.name}") String name, StartCommand startCommand, HelpCommand helpCommand) {
+    public ScheduleBot(@Value("${bot.token}") String token, @Value("${bot.name}") String name, StartCommand startCommand, HelpCommand helpCommand, CreateCommand createCommand) {
         this.BOT_TOKEN = token;
         this.BOT_NAME = name;
         this.startCommand = startCommand;
         this.helpCommand = helpCommand;
+        this.createCommand = createCommand;
         register(this.startCommand);
         register(this.helpCommand);
+        register(this.createCommand);
     }
 
 

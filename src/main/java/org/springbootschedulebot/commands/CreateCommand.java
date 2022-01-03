@@ -1,4 +1,4 @@
-package org.springbootschedulebot.service;
+package org.springbootschedulebot.commands;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springbootschedulebot.util.Commands;
@@ -6,8 +6,6 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
-
-import java.util.Arrays;
 
 @Component
 @Slf4j

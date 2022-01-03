@@ -1,4 +1,4 @@
-package org.springbootschedulebot.service;
+package org.springbootschedulebot.commands;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springbootschedulebot.util.Commands;
