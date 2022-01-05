@@ -20,4 +20,8 @@ public class UserService {
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
+    public void create(String username) {
+        userRepository.create(username);
+    }
 }
