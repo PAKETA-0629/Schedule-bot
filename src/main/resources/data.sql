@@ -7,15 +7,15 @@ CREATE OR REPLACE FUNCTION insert_members_username() RETURNS TRIGGER AS '
     END;
 ' LANGUAGE plpgsql;
 
-DROP TABLE IF EXISTS users_states;
-DROP TABLE IF EXISTS states;
 DROP TABLE IF EXISTS custom_schedule;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
 
                        id SERIAL PRIMARY KEY,
-                       user_name VARCHAR(32)
+                       user_name VARCHAR(32),
+                       state varchar(255),
+                       stage INT
 );
 
 CREATE TABLE custom_schedule (
@@ -26,21 +26,6 @@ CREATE TABLE custom_schedule (
                                  keys TEXT[] NOT NULL,
                                  "user" INT NOT NULL REFERENCES users(id),
                                  UNIQUE ("user", table_name)
-);
-
-CREATE TABLE states (
-
-                        id SERIAL PRIMARY KEY,
-                        state_name VARCHAR(255) NOT NULL UNIQUE,
-                        num_of_stages INT NOT NULL
-);
-
-CREATE TABLE users_states (
-
-                              id SERIAL PRIMARY KEY NOT NULL,
-                              "user" INT NOT NULL REFERENCES users(id) UNIQUE,
-                              state INT REFERENCES states(id),
-                              stage INT NOT NULL
 );
 
 CREATE TRIGGER trig_insert_members_username
@@ -55,5 +40,3 @@ VALUES ('kyrylo0629');
 INSERT INTO custom_schedule(table_name, names, keys, "user")
 VALUES (NULL, '{kyrylo, max, igor}', '{floor, fridge, table}', 1);
 
-INSERT INTO states(state_name, num_of_stages)
-VALUES ('create', 3);
