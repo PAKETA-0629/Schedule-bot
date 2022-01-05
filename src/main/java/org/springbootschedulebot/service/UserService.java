@@ -24,4 +24,12 @@ public class UserService {
     public void create(String username) {
         userRepository.create(username);
     }
+
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    public User findByName(String username) {
+        return userRepository.findByName(username);
+    }
 }
